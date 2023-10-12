@@ -7,7 +7,6 @@ properties:
   data_dir:
     type: string
     description: 'Base data path'
-    default: './test'
 
   roi_path:
     type: ["null", string]
@@ -17,14 +16,19 @@ properties:
   #Output dir
   maps_dir:
     type: string
-    description: 'Location of saved output maps, relative to data_dir'
+    description: 'Relative path to output maps'
     default: 'DCE_output_maps'
+
+  output_dir:
+    type: string
+    description: 'Relative path to log file'
+    default: logs/qMRI_processes/DCE_deltaCt.log
 
   #DCE input options
   dce_path:
     type: string
     description: 'Relative path to DCE 4D-image volumes'
-    default: 'dynamic'
+    default: 'dce/dce_dyn_echo1'
 
   dce_im_ext:
     type: string

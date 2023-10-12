@@ -2,3 +2,28 @@
 # Please follow the best practices: 
 # https://snakemake.readthedocs.io/en/stable/snakefiles/best_practices.html,
 # in particular regarding the standardized folder structure mentioned there. 
+
+from snakemake.utils import min_version
+min_version("6.15")
+
+# workdir: "path/to/workdir"
+
+# # Preprocessing
+# include: "rules/OE_IR_T1_mapping.smk"
+# include: "rules/DCE_VFA_T1_mapping.smk"
+# include: "rules/OE_deltaR1.smk"
+
+include: "rules/DCE_deltaCt.smk"
+
+# include: "rules/DCE_ETM.smk"
+# # include: "rules/OE_DCE_hypoxia_mapping.smk"
+
+# # Postprocessing
+# include: "OE_DCE_summary.smk"
+
+rule all:
+    input:
+        expand("{maps_dir}/{key}{ext}",
+            maps_dir = data_path("maps_dir"),
+            key = ['C_t', 'delta_C', 'C_baseline', 'C_enhancing', 'C_p_vals', 'S_p_vals'],
+            ext = ".nii.gz"),

@@ -1,7 +1,6 @@
 
 # General (previously Qbi.runner options)
-#data_dir: null
-output_dir: logs/qMRI_processes
+# data_dir: null
 # no_audit: True # -- this is a madym option
 
 # Inputs
@@ -10,7 +9,7 @@ T1_path: madym_output/T1_VFA/T1.nii.gz
 
 dce_im_ext: .nii.gz
 dce_meta_ext: .json
-#roi_path: null
+roi_path: null
 
 # Parameters
 dce_limits: [2, 9, 11, 15] 
@@ -21,6 +20,7 @@ equal_var: True
 
 # Output
 maps_dir: DCE_output_maps
+output_dir: logs/qMRI_processes/DCE_deltaCt.log
 
 
 
