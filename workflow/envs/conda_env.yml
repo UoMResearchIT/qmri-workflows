@@ -1,0 +1,26 @@
+#This sets up a conda environment for developing QbiPy
+# > conda env create -f conda_env.yml
+# After environment is created, call
+# > conda develop ./src
+# So that the preclinicalMRI module is available to import from source code
+name: preclinicalMRI_dev
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.9
+  - pytest
+  - pytest-cov
+  - pdoc3
+  - numpy
+  - matplotlib
+  - scipy
+  - scikit-image
+  - nibabel
+  - pydicom
+  - ipykernel
+  - pip
+  - gitpython
+  - pip:
+    - configargparse
+    - QbiPy
