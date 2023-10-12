@@ -1,0 +1,4 @@
+summary_dir: 'summary_outputs'
+final_maps_dir: 'masked_maps'
+roi_masks_dir: 'roi_masks'
+suffixes: ['sig_5pct', 'sig_5pct_bf', 'sig_forman']

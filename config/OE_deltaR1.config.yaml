@@ -1,0 +1,12 @@
+roi_path: null
+oe_path: 'oxygen/oe'
+oe_im_ext: '.nii.gz'
+oe_meta_ext: '.json'
+oe_limits: null
+T1_path: 'madym_output/T1_IR/T1.nii.gz'
+efficiency_path: 'madym_output/T1_IR/efficiency.nii.gz'
+average_fun: 'median'
+alternative: 'less'
+equal_var: True
+sig_level: 0.05
+maps_dir: 'OE_output_maps'

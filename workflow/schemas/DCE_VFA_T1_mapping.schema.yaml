@@ -1,0 +1,10 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+
+description: foo
+
+properties:
+  madym_config_file:
+    type: string, required = False
+    description: ''
+
+

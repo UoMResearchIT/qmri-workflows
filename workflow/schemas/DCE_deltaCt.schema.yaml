@@ -1,0 +1,82 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+
+description: an entry in the sample sheet
+
+properties:
+  #General input arguments
+  data_dir:
+    type: string
+    description: 'Base data path'
+    default: './test'
+
+  roi_path:
+    type: ["null", string]
+    description: 'Relative path to roi mask file'
+    default: null
+
+  #Output dir
+  maps_dir:
+    type: string
+    description: 'Location of saved output maps, relative to data_dir'
+    default: 'DCE_output_maps'
+
+  #DCE input options
+  dce_path:
+    type: string
+    description: 'Relative path to DCE 4D-image volumes'
+    default: 'dynamic'
+
+  dce_im_ext:
+    type: string
+    description: 'File extension of the DCE volumes'
+    default: '.nii.gz'
+
+  dce_meta_ext:
+    type: string
+    description: 'File extension of the DCE volumes meta-info'
+    default: '.json'
+
+  dce_limits:
+    type: array
+    items:
+      type: integer
+    maxItems: 4
+    minItems: 4
+    description: 'Limits for the DCE volumes, 4 element integer list specifiying the timepoints for [baseline_start, baseline_, oxygen_start, oxygen_]'
+
+  T1_path:
+    type: string
+    description: 'Relative path to T1 image'
+    default: 'madym_output/T1_VFA/T1.nii.gz'
+
+  relax_coeff:
+    type: number
+    description: 'Relaxivity constant for contrast agent - units... '
+    default: 3.4
+      
+  #Summary stats options
+  average_fun:
+    type: string
+    enum:
+      - median
+      - mean
+    description: 'Method used for temporal average {median, mean}.'
+    default: median
+
+  alternative:
+    type: string
+    enum:
+      - less
+      - two-sided
+      - greater
+    description: 'Apply 1-sided or 2-sided t-test: "less" = baseline lower than enhancing. Use "two-sided" for 2-sided.'
+    default: less
+
+  equal_var:
+    type: boolean
+    default: true 
+    description: 'Assume equal variance in pre/post enhancing periods'
+
+required:
+  - data_dir
+  - dce_limits

@@ -1,0 +1,56 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+
+description: foo
+
+properties:
+  roi_path:
+    type: string
+    default: null
+    description: 'Relative path to roi mask file'
+  oe_path:
+    type: string
+    default: 'oxygen/oe'
+    description: 'Relative path to OE 4D-image volumes'
+  oe_im_ext:
+    type: string
+    default: '.nii.gz'
+    description: 'File extension of the OE volumes'
+  oe_meta_ext:
+    type: string
+    default: '.json'
+    description: 'File extension of the OE volumes meta-info'
+  oe_limits:
+    type: integer
+    #nargs: 4
+    #required: True
+    description: 'Limits for the OE volumes, 4 element integer list'
+  T1_path:
+    type: string
+    default: 'madym_output/T1_IR/T1.nii.gz'
+    description: 'Relative path to T1 image'
+  efficiency_path:
+    type: string
+    default: 'madym_output/T1_IR/efficiency.nii.gz'
+    description: 'Relative path to T1 efficiency image'
+  average_fun:
+    type: string
+    default: 'median'
+    description: 'Method used for temporal average {median, mean}.'
+  alternative:
+    type: string
+    default: 'less'
+    description: 'Apply 1-sided or 2-sided t-test: less = baseline lower than enhancing. Use "equal" for 2-sided.'
+  equal_var:
+    type: boolean
+    default: True,  const = True
+    description: 'Assume equal variance in pre/post enhancing periods'
+  sig_level:
+    type: number
+    default: 0.05
+    description: 'Significance level for p-value map thresholds'
+  maps_dir:
+    type: string
+    default: 'OE_output_maps'
+    description: 'Location of saved output maps, relative to data_dir'
+
+

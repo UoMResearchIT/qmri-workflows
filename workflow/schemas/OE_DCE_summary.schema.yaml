@@ -1,0 +1,24 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+
+description: foo
+
+properties:
+  summary_dir:
+    type: string
+    default: 'summary_outputs'
+    description: ''
+  final_maps_dir:
+    type: string
+    default: 'masked_maps'
+    description: ''
+  roi_masks_dir:
+    type: string
+    default: 'roi_masks'
+    description: ''
+  suffixes:
+    type: string
+    #nargs: 3
+    default: ['sig_5pct', 'sig_5pct_bf', 'sig_forman']
+    description: ''
+
+

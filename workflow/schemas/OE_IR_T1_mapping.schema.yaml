@@ -1,0 +1,5 @@
+madym_config_file:
+  type: string, required = False
+  description: ''
+
+

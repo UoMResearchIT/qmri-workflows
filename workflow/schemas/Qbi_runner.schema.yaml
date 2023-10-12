@@ -1,0 +1,65 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+
+properties:
+  config:
+    type: string
+    description: >
+      to call a config file as in the above example. 
+      The config file will be read using configargparse (https://pypi.org/project/ConfigArgParse/)
+
+  data_dir:
+    type: string
+    description: >
+      path to a folder from which the output folder is relative. 
+      If not set, defaults to the current working directory
+
+  output_dir:
+    type: string
+    description: >
+      relative path to the output folder from data_dir. 
+      If not set, defaults to the function name suffixed with `_output`
+
+  overwrite:
+    type: boolean
+    default: true
+    description: if set to false, an error is returned if the output folder already exists
+          
+  program_log:
+    type: string
+    default: _program_log
+    description: name of the program log, will be appended to the function name and suffixed with a timestamp
+
+  audit_dir:
+    type: string
+    default: audit_logs
+    description: directory of the audit log, either absolute or  relative to the cwd
+
+  audit_log:
+    type: string
+    default: _audit_log
+    description: name of the audit log, will be appended  to the function name and suffixed with a timestamp
+
+  config_log:
+    type: string
+    default: _config_log
+    description: name of the output config log, will be appended  to the function name and suffixed with a timestamp
+          
+  no_log:
+    type: boolean
+    default: false
+    description: flag to turn off program logging, stdout and stderr will be piped to the screen as normal
+
+  no_audit:
+    type: bool
+    default: False
+    description: flag to turn off audit logging
+
+  error_exit_code:
+    type: int
+    default: 1
+    description: >
+      Value to return if the function raises an exception. 
+      The exception will be caught and printed to the output logs. 
+      On some systems (eg XNAT) it is preferable for python to still
+      return a zero exit code so all output handlers run correctly, in which
+      case error_exit_code can be set to 0
