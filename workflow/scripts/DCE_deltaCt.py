@@ -8,12 +8,12 @@ from contextlib import redirect_stdout, redirect_stderr
 from QbiPy.image_io.analyze_format import write_nifti_img
 from PreclinicalMRI.dynamic import dce
 
-with open(snakemake.log[0], "w") as log:
+with open(snakemake.log["DCE_deltaCt"], "w") as log:
     with redirect_stderr(log), redirect_stdout(log):
 
         print('Running DCE_deltaCt')
         dce_data = dce.compute_dataset_delta_Ct(
-            snakemake.config["data_dir"], 
+            os.getcwd(), 
             snakemake.config["dce_limits"], 
             dce_path = snakemake.config["dce_path"],
             dce_im_ext = snakemake.config["dce_im_ext"],
@@ -26,7 +26,7 @@ with open(snakemake.log[0], "w") as log:
             equal_var = snakemake.config["equal_var"],
             debug = 0)
 
-        maps_dir = os.path.join(snakemake.config["data_dir"], snakemake.config["maps_dir"])
+        maps_dir = snakemake.config["maps_dir"]
         os.makedirs(maps_dir, exist_ok = True)
 
         for key,value in dce_data.items():

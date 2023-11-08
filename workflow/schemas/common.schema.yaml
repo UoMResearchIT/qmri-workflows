@@ -1,0 +1,13 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+
+description: properties shared among processes
+
+properties:
+  data_dir:
+    type: ["null", "string"]
+    description: 'Base data path, defines snakemake''s workdir'
+
+  roi_path:
+    type: ["null", "string"]
+    description: 'Relative path to roi mask file'
+    default: null

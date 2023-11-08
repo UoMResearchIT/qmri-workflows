@@ -4,7 +4,10 @@
 # in particular regarding the standardized folder structure mentioned there. 
 
 from snakemake.utils import min_version
-min_version("6.15")
+min_version("v7.31.0")
+
+configfile: workflow.source_path("../config/common.config.yaml")
+include: "rules/common.smk"
 
 # workdir: "path/to/workdir"
 

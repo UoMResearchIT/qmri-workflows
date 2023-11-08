@@ -1,0 +1,6 @@
+# General (previously Qbi.runner options)
+# data_dir: null
+# no_audit: True # -- this is a madym option
+
+data_dir: "test/processed/20210624_151419_210346_1_1"
+roi_path: null
