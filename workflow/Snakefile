@@ -17,7 +17,7 @@ include: "rules/common.smk"
 # include: "rules/OE_deltaR1.smk"
 
 include: "rules/DCE_deltaCt.smk"
-
+include: "rules/madym_T1.smk"
 # include: "rules/DCE_ETM.smk"
 # # include: "rules/OE_DCE_hypoxia_mapping.smk"
 
@@ -26,7 +26,5 @@ include: "rules/DCE_deltaCt.smk"
 
 rule all:
     input:
-        expand("{maps_dir}/{key}{ext}",
-            maps_dir = data_path("maps_dir"),
-            key = ['C_t', 'delta_C', 'C_baseline', 'C_enhancing', 'C_p_vals', 'S_p_vals'],
-            ext = ".nii.gz"),
+        rules.DCE_deltaCt.output,
+        rules.madym_T1.output

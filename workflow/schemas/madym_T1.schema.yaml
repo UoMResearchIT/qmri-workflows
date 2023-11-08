@@ -1,0 +1,121 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+
+
+# The following options are overriden by snakemake's functionality:
+# working_directory: set to workdir
+# config_file: disabled (replaced by rule's configfile)
+
+# roi_name
+
+properties:
+
+  # Inputs
+  T1_vols:
+    type: [array, "null"]
+    default: null
+    description: Variable flip angle file names, comma separated (no spaces).
+  T1_dir:
+    type: [string, "null"]
+    default: null
+    description: Folder containing T1 input volumes, can be left empty if already included in option --T1_vols
+  img_fmt_r:
+    type: string
+    default: NIFTI_GZ
+    # enum: [ANALYZE, ANALYZE_SPARSE, NIFTI, NIFTI_GZ, DICOM] # TODO: adjust madym_T1.smk inputs for other formats
+    const: NIFTI_GZ
+    description: Image format for reading input.
+  error_name:
+    type: [string, "null"]
+    default: null
+    description: Error codes image file name.
+
+  # Outputs
+  output_dir:
+    type: [string, "null"]
+    default: null
+    description: Output path, will use a temporary directory if empty.
+  img_fmt_w:
+    type: string
+    default: NIFTI_GZ
+    # enum: [ANALYZE, ANALYZE_SPARSE, NIFTI, NIFTI_GZ, DICOM] # TODO: adjust madym_T1.smk outputs for other formats
+    const: NIFTI_GZ
+    description: Image format for writing output.
+  log_file:
+    type: string
+    default: logs/madym_T1.log
+    description: Folder in which audit output is saved.
+  config_out:
+    type: [string, "null"]
+    default: logs/madym_T1.conf
+    description: Filename of the output config file.
+  no_log:
+    type: boolean
+    default: false
+    description: Switch off program logging.
+  no_audit:
+    type: boolean
+    default: true
+    description: Switch off audit logging.
+  audit_dir:
+    type: string
+    default: audit_logs
+    description: Folder in which audit output is saved.
+  audit_name:
+    type: string
+    default: madym_T1.audit
+    description: Audit file name.
+  quiet:
+    type: boolean
+    default: false
+    description: Do not display logging messages in cout.
+
+  # Params
+  method:
+    type: ["null","string"]
+    default: null
+    enum: [VFA, VFA_B1, IR, IR_E]
+    description: T1 method to use to fit, Variable Flip-Angle [B1 corrected], Inversion Recovery [with efficiency weighting]
+  B1_name:
+    type: [string, "null"]
+    default: null
+    description: Path to the B1 correction map.
+  B1_scaling:
+    type: ["number", "null"]
+    default: null
+    description: Value applied to scaled values in the B1 correction map.
+  B1_values:
+    type: [array, "null"]
+    default: null
+    description: B1 correction values, 1D array of length n_samples.
+  T1_noise:
+    type: ["number", "null"]
+    default: null
+    description: PD noise threshold.
+
+  # Other
+  nifti_scaling:
+    type: boolean
+    default: false
+    description: If set, applies intensity scaling and offset when reading/writing NIFTI images.
+  nifti_4D:
+    type: boolean
+    default: false
+    description: If set, reads NIFTI 4D images for T1 mapping and dynamic inputs.
+  use_BIDS:
+    type: boolean
+    default: false
+    description: If set, writes images using BIDS JSON meta info.
+  voxel_size_warn_only:
+    type: boolean
+    default: false
+    description: Warn if voxel sizes don't match for subsequent images.
+  overwrite:
+    type: boolean
+    default: true
+    description: Set overwrite existing analysis in the output directory ON.
+
+required:
+  - method
+  - T1_vols
+
+# additionalProperties: false

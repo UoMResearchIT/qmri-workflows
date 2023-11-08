@@ -1,0 +1,16 @@
+# madym_T1
+# version = v4.23.0
+
+method: IR_E
+
+T1_dir: IR
+T1_vols: [OE_400, OE_800, OE_1000, OE_1500, OE_2000, OE_2500]
+B1_name: null
+
+output_dir: T1_IR
+log_file: logs/madym_T1_IR.log
+config_out: logs/madym_T1_IR.conf
+
+T1_noise: 0.1
+B1_scaling: 1000
+B1_values: []
